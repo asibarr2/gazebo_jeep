@@ -115,17 +115,17 @@
         izz="0.007"/>
     </inertial>
   </link>
-
-  <link name="front_left_wheel">
-    <!--origin xyz="0.1 0.13 0.1" rpy="0 1.5707 1.5707"/-->
+  
+  <link name="front_right_wheel">
+    <!--origin xyz="0.1 -0.13 0.1" rpy="0 1.5707 1.5707"/-->
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
         <cylinder radius="0.1778" length="0.1524"/>
       </geometry>
-    </collision>
-    <visual name="left_wheel_visual">
-      <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
+    </collision> 
+    <visual name="right_wheel_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="1.57075 0 0"/>
       <geometry>
         <mesh filename="package://mybot_description/meshes/Wheel.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -133,7 +133,7 @@
     <inertial>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <mass value="5"/>
-      <cylinder_inertia m="5" r="0.1" h="0.05"/>
+      <!-- <cylinder_inertia m="5" r="0.1" h="0.05"/> -->
       <inertia
         ixx="0.004" ixy="0.001" ixz="0.0"
         iyy="0.006" iyz="0.0"
@@ -141,23 +141,32 @@
     </inertial>
   </link>
 
-  <joint type="continuous" name="left_wheel_hinge">
+  <joint type="continuous" name="back_left_wheel_hinge">
     <origin xyz="0.1 0.3 0" rpy="0 0 0"/>
-    <child link="left_wheel"/>
+    <child link="back_left_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-  <joint type="continuous" name="right_wheel_hinge">
+  <joint type="continuous" name="back_right_wheel_hinge">
     <origin xyz="0.1 -0.3 0" rpy="0 0 0"/>
-    <child link="right_wheel"/>
+    <child link="back_right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
+  
+  <joint type="continuous" name="front_right_wheel_hinge">
+    <origin xyz="0.8 -0.3 0" rpy="0 0 0"/>
+    <child link="front_right_wheel"/>
+    <parent link="chassis"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+   </joint>
 
 <!--
   <link name="camera">
