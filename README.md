@@ -1,5 +1,5 @@
-# gazebo_jeep
-ROS Packages for configuration of ACE Lab Autonomous Jeep
+# Differential Drive Navigation Simulation
+ROS Packages for configuration of Differential Drive Navigation Simulation
 
 # Required Packages for Proper Installation
 sudo apt-get install ros-kinetic-amcl  --> Navigation Algorithm
